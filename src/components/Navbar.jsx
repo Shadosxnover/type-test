@@ -26,7 +26,7 @@ const Navbar = () => {
             >
               <Activity className="h-8 w-8 text-green-500" />
               <span className="text-2xl font-bold bg-gradient-to-r from-green-500 to-green-700 bg-clip-text text-transparent">
-                TypeTest
+                Swift Typing
               </span>
             </Link>
           </div>
