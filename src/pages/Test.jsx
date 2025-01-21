@@ -88,7 +88,7 @@ function Test() {
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
-    
+
     if (!testActive && inputValue.length === 1) {
       setTestActive(true);
     }
@@ -136,7 +136,7 @@ function Test() {
     const totalCharacters = words
       .slice(0, currentWordIndex)
       .join(' ').length + input.length;
-    
+
     if (totalCharacters === 0) return;
 
     const calculatedAccuracy = Math.round(
@@ -197,24 +197,23 @@ function Test() {
               <button
                 key={duration}
                 onClick={() => setTestDuration(duration)}
-                className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${
-                  timer === duration
+                className={`px-6 py-2 rounded-lg transition-all duration-200 font-medium ${timer === duration
                     ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
-                }`}
+                  }`}
               >
                 {duration}s
               </button>
             ))}
           </div>
 
-          <div 
+          <div
             ref={textContainerRef}
             className="mb-6 p-6 bg-gray-50 dark:bg-gray-700 rounded-xl text-xl font-mono leading-relaxed h-[150px] overflow-y-auto custom-scrollbar"
           >
             {words.map((word, wordIndex) => (
-              <span 
-                key={wordIndex} 
+              <span
+                key={wordIndex}
                 ref={wordIndex === currentWordIndex ? activeWordRef : null}
                 className="mr-2 inline-block transition-all duration-200"
               >
@@ -222,25 +221,23 @@ function Test() {
                   word.split('').map((char, charIndex) => (
                     <span
                       key={charIndex}
-                      className={`${
-                        charIndex < input.length
+                      className={`${charIndex < input.length
                           ? char === input[charIndex]
                             ? 'text-green-500'
                             : 'text-red-500 bg-red-100 dark:bg-red-900/30 rounded'
                           : charIndex === input.length
-                          ? 'bg-blue-100 dark:bg-blue-900/50 rounded'
-                          : ''
-                      }`}
+                            ? 'bg-blue-100 dark:bg-blue-900/50 rounded'
+                            : ''
+                        }`}
                     >
                       {char}
                     </span>
                   ))
                 ) : (
-                  <span className={`${
-                    wordIndex < currentWordIndex 
-                      ? 'text-gray-400' 
+                  <span className={`${wordIndex < currentWordIndex
+                      ? 'text-gray-400'
                       : 'text-gray-800 dark:text-gray-200'
-                  }`}>
+                    }`}>
                     {word}
                   </span>
                 )}
@@ -256,10 +253,13 @@ function Test() {
               className="w-full p-4 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-lg font-mono shadow-sm"
               placeholder={`Type: "${currentWord}"`}
             />
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-sm text-gray-400">
+            <button
+              onClick={startTest}
+              className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-sm bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-all duration-200"
+            >
               <RotateCcw className="w-4 h-4" />
-              Press Tab
-            </div>
+              Restart
+            </button>
           </div>
         </div>
 
